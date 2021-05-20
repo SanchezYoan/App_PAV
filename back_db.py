@@ -2,10 +2,10 @@ import sys, os
 import mysql, mysql.connector
 
 
-def create_schema(cursor):
+def create_schema():
     """Cette fonction sert a créer la table 'Tradders' si inexistante"""
     
-    cursor.execute("""CREATE TABLE IF NOT EXISTS "Account" (
+    c.execute("""CREATE TABLE IF NOT EXISTS "Account" (
     "Id"	TEXT,
     "Name"	TEXT,
     "Email" TEXT,
@@ -17,13 +17,19 @@ def create_user():
     
     """cette fonction permet de créer un compte dans la db"""
 
-    cursor.execute(""" INSERT INTO 'ACOUNT' ('Id', 'Name', 'Email', 'Password') 
+    c.execute( """CREATE USER 'nouveau_utilisateur'@'localhost' IDENTIFIED BY 'mot_de_passe'""");
+
+
+def register_user():
+
+    c.execute(""" INSERT INTO 'ACOUNT' ('Id', 'Name', 'Email', 'Password') 
         VALUES ('%', '%', '%', '%')""")
 
 def main():
-    
-    conn=mysql.connector.connect("Blockchaine.db")
+
+    mysql.connector.connect("Blockchaine.db")
     c=conn.cursor()
+    create_user()
     create_schema(c)
     conn.commit()
     conn.close()
