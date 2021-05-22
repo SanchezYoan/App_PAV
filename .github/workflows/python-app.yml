@@ -23,37 +23,37 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install flake8 
-        pip install pdoc3
+        # pip install flake8 
+        # pip install pdoc3
         pip install -r requirements.txt
-    - name: Lint with flake8
-      run: |
+    #- name: Lint with flake8
+      #run: |
         # stop the build if there are Python syntax errors or undefined names
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        #flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+        #flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with unittest
       run: |
         python -m unittest
         
-    - name: auto pdoc
-      run: |
-        pdoc3 --html -o tmp back/
-        rm -rf docs
-        mkdir -p docs/
-        mv tmp/back/* docs/
-        rm -rf tmp/
+    #- name: auto pdoc
+     # run: |
+       # pdoc3 --html -o tmp back/
+       # rm -rf docs
+       # mkdir -p docs/
+       # mv tmp/back/* docs/
+       # rm -rf tmp/
         
-    - name: Commit files
-      run: |
-        echo ${{ github.ref }}
-        git add .
-        git rm -rf __pycache__/
-        git rm -rf back/__pycache__/
-        git rm -rf test/__pycache__/
-        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
-        git commit -m "CI: Automated build push" -a | exit 0
+    #- name: Commit files
+      #run: |
+        #echo ${{ github.ref }}
+        #git add .
+        #git rm -rf __pycache__/
+        #git rm -rf back/__pycache__/
+        #git rm -rf test/__pycache__/
+        #git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        #git config --local user.name "github-actions[bot]"
+        #git commit -m "CI: Automated build push" -a | exit 0
     
     - name: Login to Heroku Container registry
       env: 
