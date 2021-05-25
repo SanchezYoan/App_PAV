@@ -11,7 +11,8 @@ RUN pip install -r requirements.txt
 # RUN  .
 
 #Bundle app source
-COPY init  ./init
+
+COPY back  ./back
 COPY wsgi.py .
 
 EXPOSE 5000
