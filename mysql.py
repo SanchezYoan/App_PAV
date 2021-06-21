@@ -1,5 +1,6 @@
 import sys
 import mysql.connector
+#import argparse
 
 cnx = mysql.connector.connect(user='yoan'@'192.168.163.1', password='AzErTy123*',
                               host='localhost',
@@ -7,8 +8,8 @@ cnx = mysql.connector.connect(user='yoan'@'192.168.163.1', password='AzErTy123*'
 cnx.close()
 
 
-parser.add_argument("-au", "--ajouter_user", help="ajouter un utilisateur à mysql")
-parser.add_argument("-af", "--ajouter_facture", nargs="*", help="Ajouter une facture à la base de donnee")
+#parser.add_argument("-au", "--ajouter_user", help="ajouter un utilisateur à mysql")
+#parser.add_argument("-af", "--ajouter_facture", nargs="*", help="Ajouter une facture à la base de donnee")
 
 def add_client(cursor):
 #Ajouter les informations d'un client
